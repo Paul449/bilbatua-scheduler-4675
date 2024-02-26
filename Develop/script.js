@@ -6,11 +6,19 @@ var bodyContainer = $('body').children().eq(1);
 
                                                                                       /*jQuery selectors section*/
 
-var currentDay = $('#currentDay'); // targeting the HTML element where the current day function will apply using the jQuery method equal to getElementById
+
 
 
                                                                                             /*time blocks*/
-  // In this section, I will define                                                                                          
+  // In this section, I will define the rest of the time blocks                                                                                        
+
+                                                                                            /*hour 9 10 and 11*/
+var hour9;
+
+var hour10;
+
+var hour11;
+
 
 
                                                                                             /*hour 12 */
@@ -36,18 +44,24 @@ textArea12.attr({class:"col-8 col-md-10 description", rows:"3"});
 
 btn12.attr({class:'btn saveBtn col-2 col-md-1', 'aria-label':'save'});
 
-
 i12.attr({class:'fas fa-save', 'aria-hidden':'true'});
 
-btn12.append(i12);
 
-textArea12.append(btn12);
-
-inner12.append(textArea12);
+bodyContainer.append(hour12);
 
 hour12.append(inner12);
 
-bodyContainer.append(hour12);
+hour12.append(textArea12);
+
+hour12.append(btn12);
+
+btn12.append(i12);
+
+var timeNow12 = new Date();
+
+timeNow12.setHours(12);
+
+
 
                                                                                             /*hour 13*/
 
@@ -81,16 +95,19 @@ i13.attr('class','fas fa-save');
 
 i13.attr('aria-hidden','true');
 
-btn13.append(i13);
-
-textArea13.append(btn13);
-
-inner13.append(textArea13);
+bodyContainer.append(hour13);
 
 hour13.append(inner13);
 
-bodyContainer.append(hour13);
+hour13.append(textArea13);
 
+hour13.append(btn13);
+
+btn13.append(i13);
+
+var timeNow13 = new Date();
+
+timeNow13.getHours(13);
 
 
 
@@ -126,15 +143,21 @@ i14.attr('class','fas fa-save');
 
 i14.attr('aria-hidden','true');
 
-btn14.append(i14);
-
-textArea14.append(btn14);
-
-inner14.append(textArea14);
+bodyContainer.append(hour14);
 
 hour14.append(inner14);
 
-bodyContainer.append(hour14);
+hour14.append(textArea14);
+
+hour14.append(btn14);
+
+btn14.append(i14);
+
+var timeNow14 = new Date();
+
+timeNow14.setHours(14);
+
+
 
                                                                                             /*hour 15 */
 
@@ -168,15 +191,21 @@ i15.attr('class','fas fa-save');
 
 i15.attr('aria-hidden','true');
 
-btn15.append(i15);
-
-textArea15.append(btn15);
-
-inner15.append(textArea15);
+bodyContainer.append(hour15);
 
 hour15.append(inner15);
 
-bodyContainer.append(hour15);
+hour15.append(textArea15);
+
+hour15.append(btn15);
+
+btn15.append(i15);
+
+var timeNow15 = new Date();
+
+timeNow15.getHours(15);
+
+
 
 
                                                                                             /*hour 16 */
@@ -211,15 +240,19 @@ i16.attr('class','fas fa-save');
 
 i16.attr('aria-hidden','true');
 
-btn16.append(i16);
-
-textArea16.append(btn16);
-
-inner16.append(textArea16);
+bodyContainer.append(hour16);
 
 hour16.append(inner16);
 
-bodyContainer.append(hour16);
+hour16.append(textArea16);
+
+hour16.append(btn16);
+
+btn16.append(i16);
+
+var timeNow16 = new Date();
+
+timeNow16.setHours(16);
 
 
 
@@ -255,21 +288,72 @@ i17.attr('class','fas fa-save');
 
 i17.attr('aria-hidden','true');
 
-btn17.append(i17);
-
-textArea17.append(btn17);
-
-inner17.append(textArea17);
+bodyContainer.append(hour17);
 
 hour17.append(inner17);
 
-bodyContainer.append(hour17);
+hour17.append(textArea17);
+
+hour17.append(btn17);
+
+btn17.append(i17);
+
+var timeNow17 = new Date();
+
+timeNow17.setHours(17);
 
 
 
-                                                                                                /*functions */
+
+                                                                                            /*display current day*/
+
+var currentDayBox = $('#currentDay'); // targeting the HTML element where the current day function will apply using the jQuery method equal to getElementById
+
+var Day = dayjs().format('dddd, MMMM D: ');
+
+var Hours = dayjs().format('h:mm A');
+
+currentDayBox.append(Day);
+
+currentDayBox.append(Hours);
+
+var myArray = [timeNow12,timeNow13,timeNow14,timeNow15,timeNow16,timeNow17];
+
+var myhours = [hour12,hour13,hour14,hour15,hour16,hour17];
 
 
+
+                                                                                            /*functions */
+
+
+
+function colorBlocks() { // changes color of timeblocks depend on the current time (past:grey, present:red, future:green)
+
+for(var i = 0; i < myArray; i++){
+
+  console.log(myArray[i]);
+}
+}
+  
+colorBlocks();
+
+
+function saveButton() {  // function which performs the task to save text inside the timeblocks and display a text saying "Appointment added to local storage";
+
+
+
+}
+
+function refreshWP() { //function which refresh webpage and keeps the text inside of it without erasing it.
+
+
+
+}
+
+                                                                                              /* addEventListeners */
+
+
+                                                                                              
 
 
 $(function () {
