@@ -13,13 +13,23 @@ var bodyContainer = $('body').children().eq(1);
   // In this section, I will define the rest of the time blocks                                                                                        
 
                                                                                             /*hour 9 10 and 11*/
-var hour9;
+var hour9 = $('#hour-9');
 
-var hour10;
+var timeNow9 = new Date();
 
-var hour11;
+timeNow9.setHours(9);
 
+var hour10 = $('#hour-10');
 
+var timeNow10 = new Date();
+
+timeNow10.setHours(10);
+
+var hour11 = $('#hour-11');
+
+var timeNow11 = new Date();
+
+timeNow11.setHours(11);
 
                                                                                             /*hour 12 */
 
@@ -107,7 +117,7 @@ btn13.append(i13);
 
 var timeNow13 = new Date();
 
-timeNow13.getHours(13);
+timeNow13.setHours(13);
 
 
 
@@ -203,7 +213,7 @@ btn15.append(i15);
 
 var timeNow15 = new Date();
 
-timeNow15.getHours(15);
+timeNow15.setHours(15);
 
 
 
@@ -309,34 +319,98 @@ timeNow17.setHours(17);
 
 var currentDayBox = $('#currentDay'); // targeting the HTML element where the current day function will apply using the jQuery method equal to getElementById
 
-var Day = dayjs().format('dddd, MMMM D: ');
-
-var Hours = dayjs().format('h:mm A');
+var Day = dayjs().format('dddd, MMMM D');
 
 currentDayBox.append(Day);
 
 currentDayBox.append(Hours);
 
-var myArray = [timeNow12,timeNow13,timeNow14,timeNow15,timeNow16,timeNow17];
-
-var myhours = [hour12,hour13,hour14,hour15,hour16,hour17];
+var myArray = [timeNow9,timeNow10,timeNow11,timeNow12,timeNow13,timeNow14,timeNow15,timeNow16,timeNow17];
 
 
 
-                                                                                            /*functions */
 
 
+/*functions */
 
-function colorBlocks() { // changes color of timeblocks depend on the current time (past:grey, present:red, future:green)
+// changes color of timeblocks depend on the current time (past:grey, present:red, future:green)
 
-for(var i = 0; i < myArray; i++){
 
-  console.log(myArray[i]);
-}
-}
+  function colorBlocks() { 
+
+   var Hours = dayjs().hour();
+
+   for(var i = 0; i < myArray.length; i++){
+
+    if(myArray[i] < Hours){
+
+      console.log(hour9.attr('style','color:gray'));
+
+      console.log(hour10.attr('style','color:gray'));
+
+      console.log(hour11.attr('style','color:gray'));
+
+      console.log(hour12.attr('style','color:gray'));
+
+      console.log(hour13.attr('style','color:gray'));
+
+      console.log(hour14.attr('style','color:gray'));
+
+      console.log(hour15.attr('style','color:gray'));
+
+      console.log(hour16.attr('style','color:gray'));
+
+      console.log(hour17.attr('style','color:gray'));
+
+    } else if(myArray[i] === Hours) {
+
+      console.log(hour9.attr('style','color:red'));
+
+      console.log(hour10.attr('style','color:red'));
+
+      console.log(hour11.attr('style','color:red'));
+
+      console.log(hour12.attr('style','color:red'));
+
+      console.log(hour13.attr('style','color:red'));
+
+      console.log(hour14.attr('style','color:red'));
+
+      console.log(hour15.attr('style','color:red'));
+
+      console.log(hour16.attr('style','color:red'));
+
+      console.log(hour17.attr('style','color:red'));
+
+    } else {
+
+      console.log(hour9.attr('style','color:green'));
+
+      console.log(hour10.attr('style','color:green'));
+
+      console.log(hour11.attr('style','color:green'));
+
+      console.log(hour12.attr('style','color:green'));
+
+      console.log(hour13.attr('style','color:green'));
+
+      console.log(hour14.attr('style','color:green'));
+
+      console.log(hour15.attr('style','color:green'));
+
+      console.log(hour16.attr('style','color:green'));
+
+      console.log(hour17.attr('style','color:green'));
+
+
+    }
+
+   }
+
+  }
   
-colorBlocks();
-
+  colorBlocks();
+  
 
 function saveButton() {  // function which performs the task to save text inside the timeblocks and display a text saying "Appointment added to local storage";
 
@@ -356,23 +430,4 @@ function refreshWP() { //function which refresh webpage and keeps the text insid
                                                                                               
 
 
-$(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
-  //
-  // TODO: Add code to display the current date in the header of the page.
-});
+
