@@ -323,8 +323,6 @@ var Day = dayjs().format('dddd, MMMM D');
 
 currentDayBox.append(Day);
 
-currentDayBox.append(Hours);
-
 var myArray = [timeNow9,timeNow10,timeNow11,timeNow12,timeNow13,timeNow14,timeNow15,timeNow16,timeNow17];
 
 
@@ -412,11 +410,35 @@ var myArray = [timeNow9,timeNow10,timeNow11,timeNow12,timeNow13,timeNow14,timeNo
   colorBlocks();
   
 
-function saveButton() {  // function which performs the task to save text inside the timeblocks and display a text saying "Appointment added to local storage";
+  function saveButton() {  
+
+    var inputText = $('textarea');
+
+    var buttons = $('button');
+    
+    inputText.innerHTML = "";
+
+    localStorage.setItem('inputText', JSON.stringify(inputText));
+
+    buttons.on('click',function(event){
+
+      event.preventDefault();
+
+      var text = inputText.value.trim();
+
+      if(text === "") {
+
+        return;
+        
+      }
+
+    })
+  
+    }
+    
+    saveButton();
 
 
-
-}
 
 function refreshWP() { //function which refresh webpage and keeps the text inside of it without erasing it.
 
