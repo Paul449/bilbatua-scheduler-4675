@@ -2,6 +2,8 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
+var header = $('body').children().eq(0);
+
 var bodyContainer = $('body').children().eq(1);
 
                                                                                       /*jQuery selectors section*/
@@ -13,19 +15,28 @@ var bodyContainer = $('body').children().eq(1);
   // In this section, I will define the rest of the time blocks                                                                                        
 
                                                                                             /*hour 9 10 and 11*/
-var hour9 = $('#hour-9');
+var hour9 = $('#hour-9'); // targetin the hour-9 html element
 
-var timeNow9 = new Date();
+var textArea9 = $('body').children().eq(1).children().eq(0).children().eq(1);
 
-timeNow9.setHours(9);
+var timeNow9 = new Date(); // calling current hour
+
+timeNow9.setHours(9); // assigning specific hour for hour-9
+
 
 var hour10 = $('#hour-10');
+
+var textArea10 = $('body').children().eq(1).children().eq(1).children().eq(1);
 
 var timeNow10 = new Date();
 
 timeNow10.setHours(10);
 
+
+
 var hour11 = $('#hour-11');
+
+var textArea11 = $('body').children().eq(1).children().eq(2).children().eq(1);
 
 var timeNow11 = new Date();
 
@@ -47,6 +58,8 @@ hour12.attr({id:'hour-12', class:'row time-block future'});
 
 
 inner12.attr('class','col-2 col-md-1 hour text-center py-3');
+
+
 
 inner12.text('12PM');
 
@@ -94,6 +107,8 @@ inner13.attr('class','col-2 col-md-1 hour text-center py-3');
 inner13.text('1PM');
 
 textArea13.attr('class',"col-8 col-md-10 description");
+
+textArea13.attr('type','text');
 
 textArea13.attr('rows',"3");
 
@@ -143,6 +158,8 @@ inner14.text('2PM');
 
 textArea14.attr('class',"col-8 col-md-10 description");
 
+
+
 textArea14.attr('rows',"3");
 
 btn14.attr('class','btn saveBtn col-2 col-md-1');
@@ -171,7 +188,7 @@ timeNow14.setHours(14);
 
                                                                                             /*hour 15 */
 
-var hour15 = $('<div>');
+var hour15 = $('<div>'); // 
 
 var inner15 = $('<div>');
 
@@ -190,6 +207,8 @@ inner15.attr('class','col-2 col-md-1 hour text-center py-3');
 inner15.text('3PM');
 
 textArea15.attr('class',"col-8 col-md-10 description");
+
+
 
 textArea15.attr('rows',"3");
 
@@ -240,6 +259,7 @@ inner16.text('4PM');
 
 textArea16.attr('class',"col-8 col-md-10 description");
 
+
 textArea16.attr('rows',"3");
 
 btn16.attr('class','btn saveBtn col-2 col-md-1');
@@ -288,6 +308,7 @@ inner17.text('5PM');
 
 textArea17.attr('class',"col-8 col-md-10 description");
 
+
 textArea17.attr('rows',"3");
 
 btn17.attr('class','btn saveBtn col-2 col-md-1');
@@ -323,7 +344,7 @@ var Day = dayjs().format('dddd, MMMM D');
 
 currentDayBox.append(Day);
 
-var myArray = [timeNow9,timeNow10,timeNow11,timeNow12,timeNow13,timeNow14,timeNow15,timeNow16,timeNow17];
+var myArray = [timeNow9,timeNow10,timeNow11,timeNow12,timeNow13,timeNow14,timeNow15,timeNow16,timeNow17]; // targeting the hours for each timeblock
 
 
 
@@ -333,12 +354,14 @@ var myArray = [timeNow9,timeNow10,timeNow11,timeNow12,timeNow13,timeNow14,timeNo
 
 // changes color of timeblocks depend on the current time (past:grey, present:red, future:green)
 
-
+/*
   function colorBlocks() { 
 
    var Hours = dayjs().hour();
 
    for(var i = 0; i < myArray.length; i++){
+
+    var applyHour;
 
     if(myArray[i] < Hours){
 
@@ -362,19 +385,19 @@ var myArray = [timeNow9,timeNow10,timeNow11,timeNow12,timeNow13,timeNow14,timeNo
 
     } else if(myArray[i] === Hours) {
 
-      console.log(hour9.attr('style','color:red'));
+      hour9.attr('style','color:red');
 
-      console.log(hour10.attr('style','color:red'));
+      hour10.attr('style','color:red');
 
-      console.log(hour11.attr('style','color:red'));
+      hour11.attr('style','color:red');
 
-      console.log(hour12.attr('style','color:red'));
+      hour12.attr('style','color:red');
 
-      console.log(hour13.attr('style','color:red'));
+      hour13.attr('style','color:red'));
 
-      console.log(hour14.attr('style','color:red'));
+      hour14.attr('style','color:red'));
 
-      console.log(hour15.attr('style','color:red'));
+      hour15.attr('style','color:red'));
 
       console.log(hour16.attr('style','color:red'));
 
@@ -408,45 +431,45 @@ var myArray = [timeNow9,timeNow10,timeNow11,timeNow12,timeNow13,timeNow14,timeNo
   }
   
   colorBlocks();
+  */
+
+          /*addEventListener for inputting any text inside timeblocks */
   
+    $('.description').attr('name','insert something');
 
-  function saveButton() {  
+    //$('body').children().eq(0).children().eq(3); // accessing the local storage message element from HTML doc
 
-    var inputText = $('textarea');
+    $('.description').on('input', function(enterData) {  
 
-    var buttons = $('button');
-    
-    inputText.innerHTML = "";
+      $('.description[name]').val(); // refers to textarea
 
-    localStorage.setItem('inputText', JSON.stringify(inputText));
+      });
 
-    buttons.on('click',function(event){
-
-      event.preventDefault();
-
-      var text = inputText.value.trim();
-
-      if(text === "") {
-
-        return;
-        
-      }
-
-    })
+    /*save text to local storage */
   
+    const saveButton = function() { // this function will storage inputted text on the timeblocks afetr clicking the buttons located on the right
+
+      localStorage.setItem('enter:', $('.description[name]').val() ); // setting my localstorage to store value inputted on the timeblocks
+
     }
     
-    saveButton();
+    
+
+    let savedValue = localStorage.getItem('enter:')
+
+    if($('.description')) {
+
+      $('.description[name]').text = savedValue;
+
+    }
 
 
+    /*add event listener to click */
 
-function refreshWP() { //function which refresh webpage and keeps the text inside of it without erasing it.
+    $('button').on('click',saveButton);
 
 
-
-}
-
-                                                                                              /* addEventListeners */
+                                                                                              
 
 
                                                                                               
