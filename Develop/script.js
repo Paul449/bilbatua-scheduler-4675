@@ -13,16 +13,19 @@ var bodyContainer = $('body').children().eq(1);
 var hour9 = $('#hour-9'); // targeting the hour-9 HTML element
 var textArea9 = $('body').children().eq(1).children().eq(0).children().eq(1);
 var timeNow9 = new Date(); // capturing the current hour
+//var specificbtn9;
 timeNow9.setHours(9); // setting a specific hour for hour-9
 
 var hour10 = $('#hour-10'); // targeting the hour-10 HTML element
 var textArea10 = $('body').children().eq(1).children().eq(1).children().eq(1);
 var timeNow10 = new Date();
+//var specificbtn10;
 timeNow10.setHours(10);
 
-var hour11 = $('#hour-11'); // targeting the hour-11 HTMl element
+var hour11 = $('#hour-11').children().eq(2); // targeting the hour-11 HTMl element
 var textArea11 = $('body').children().eq(1).children().eq(2).children().eq(1);
 var timeNow11 = new Date();
+//var specificbtn11;
 timeNow11.setHours(11);
 
 /* Hour 12 */
@@ -30,12 +33,13 @@ var hour12 = $('<div>');
 var inner12 = $('<div>');
 var textArea12 = $('<textarea>');
 var btn12 = $('<button>');
+var specificbtn12 = $('btn12');
 var i12 = $('<i>');
 
 hour12.attr({ id: 'hour-12', class: 'row time-block future' });
 inner12.attr('class', 'col-2 col-md-1 hour text-center py-3');
 inner12.text('12PM');
-textArea12.attr({ class: "col-8 col-md-10 description", rows: "3" });
+textArea12.attr({ class: "col-8 col-md-10 description b-12", rows: "3"});
 btn12.attr({ class: 'btn saveBtn col-2 col-md-1', 'aria-label': 'save' });
 i12.attr({ class: 'fas fa-save', 'aria-hidden': 'true' });
 
@@ -59,11 +63,12 @@ hour13.attr('id', 'hour-13');
 hour13.attr('class', 'row time-block future');
 inner13.attr('class', 'col-2 col-md-1 hour text-center py-3');
 inner13.text('1PM');
-textArea13.attr('class', "col-8 col-md-10 description");
+textArea13.attr('class', "col-8 col-md-10 description b-13");
 textArea13.attr('type', 'text');
 textArea13.attr('rows', "3");
 btn13.attr('class', 'btn saveBtn col-2 col-md-1');
 btn13.attr('aria-label', 'save');
+btn13.attr('id','b-13');
 i13.attr('class', 'fas fa-save');
 i13.attr('aria-hidden', 'true');
 
@@ -87,10 +92,11 @@ hour14.attr('id', 'hour-14');
 hour14.attr('class', 'row time-block future');
 inner14.attr('class', 'col-2 col-md-1 hour text-center py-3');
 inner14.text('2PM');
-textArea14.attr('class', "col-8 col-md-10 description");
+textArea14.attr('class', "col-8 col-md-10 description b-14");
 textArea14.attr('rows', "3");
-btn14.attr('class', 'btn saveBtn col-2 col-md-1');
+btn14.attr('class', 'btn saveBtn col-2 col-md-1 ');
 btn14.attr('aria-label', 'save');
+btn14.attr('id','b-14');
 i14.attr('class', 'fas fa-save');
 i14.attr('aria-hidden', 'true');
 
@@ -114,10 +120,11 @@ hour15.attr('id', 'hour-15');
 hour15.attr('class', 'row time-block future');
 inner15.attr('class', 'col-2 col-md-1 hour text-center py-3');
 inner15.text('3PM');
-textArea15.attr('class', "col-8 col-md-10 description");
+textArea15.attr('class', "col-8 col-md-10 description b-15");
 textArea15.attr('rows', "3");
 btn15.attr('class', 'btn saveBtn col-2 col-md-1');
 btn15.attr('aria-label', 'save');
+btn15.attr('id','b-15');
 i15.attr('class', 'fas fa-save');
 i15.attr('aria-hidden', 'true');
 
@@ -141,10 +148,11 @@ hour16.attr('id', 'hour-16');
 hour16.attr('class', 'row time-block future');
 inner16.attr('class', 'col-2 col-md-1 hour text-center py-3');
 inner16.text('4PM');
-textArea16.attr('class', "col-8 col-md-10 description");
+textArea16.attr('class', "col-8 col-md-10 description b-16");
 textArea16.attr('rows', "3");
 btn16.attr('class', 'btn saveBtn col-2 col-md-1');
 btn16.attr('aria-label', 'save');
+btn16.attr('id','b-16');
 i16.attr('class', 'fas fa-save');
 i16.attr('aria-hidden', 'true');
 
@@ -168,10 +176,11 @@ hour17.attr('id', 'hour-17');
 hour17.attr('class', 'row time-block future');
 inner17.attr('class', 'col-2 col-md-1 hour text-center py-3');
 inner17.text('5PM');
-textArea17.attr('class', "col-8 col-md-10 description");
+textArea17.attr('class', "col-8 col-md-10 description b-17");
 textArea17.attr('rows', "3");
 btn17.attr('class', 'btn saveBtn col-2 col-md-1');
 btn17.attr('aria-label', 'save');
+btn17.attr('id','b-17');
 i17.attr('class', 'fas fa-save');
 i17.attr('aria-hidden', 'true');
 
@@ -249,19 +258,25 @@ $('.description').on('input', function(enterData) {
 
 /* Save text to local storage */
 
+
 const saveButton = function() { // this function will store inputted text on the time blocks after clicking the buttons located on the right
-  localStorage.setItem('enter:', $('.description[name]').val()); // setting my local storage to store value inputted on the time blocks
+  
+  var buttonID = $('.description[name]').val();
+  localStorage.setItem('enter:', buttonID); // setting my local storage to store value inputted on the time blocks
+ 
 }
 
 let savedValue = localStorage.getItem('enter:');
 
 if ($('.description')) {
-  $('.description[name]').text = savedValue;
+  $('.description[name]').val(savedValue);
 }
 
 /* Add event listener to click */
 
-$('button').on('click', saveButton);
+$('.btn').on('click', saveButton);
+
+
 
                                                                                               
 
