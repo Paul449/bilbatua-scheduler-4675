@@ -204,47 +204,21 @@ var myArray = [timeNow9, timeNow10, timeNow11, timeNow12, timeNow13, timeNow14, 
 
 // changes color of time blocks depending on the current time (past:grey, present:red, future:green)
 
-/* 
+
 function colorBlocks() {
   var Hours = dayjs().hour();
   for(var i = 0; i < myArray.length; i++){
-    var applyHour;
     if(myArray[i] < Hours){
-      console.log(hour9.attr('style', 'color:gray'));
-      console.log(hour10.attr('style', 'color:gray'));
-      console.log(hour11.attr('style', 'color:gray'));
-      console.log(hour12.attr('style', 'color:gray'));
-      console.log(hour13.attr('style', 'color:gray'));
-      console.log(hour14.attr('style', 'color:gray'));
-      console.log(hour15.attr('style', 'color:gray'));
-      console.log(hour16.attr('style', 'color:gray'));
-      console.log(hour17.attr('style', 'color:gray'));
+     $('textarea').addClass('past').removeClass('present future');
     } else if(myArray[i] === Hours) {
-      hour9.attr('style', 'color:red');
-      hour10.attr('style', 'color:red');
-      hour11.attr('style', 'color:red');
-      hour12.attr('style', 'color:red');
-      hour13.attr('style', 'color:red');
-      hour14.attr('style', 'color:red');
-      hour15.attr('style', 'color:red');
-      console.log(hour16.attr('style', 'color:red'));
-      console.log(hour17.attr('style', 'color:red'));
+      $('textarea').addClass('present').removeClass('past future');
     } else {
-      console.log(hour9.attr('style', 'color:green'));
-      console.log(hour10.attr('style', 'color:green'));
-      console.log(hour11.attr('style', 'color:green'));
-      console.log(hour12.attr('style', 'color:green'));
-      console.log(hour13.attr('style', 'color:green'));
-      console.log(hour14.attr('style', 'color:green'));
-      console.log(hour15.attr('style', 'color:green'));
-      console.log(hour16.attr('style', 'color:green'));
-      console.log(hour17.attr('style', 'color:green'));
+      $('textarea').addClass('future').removeClass('past present');
     }
   }
 }
-
 colorBlocks();
-*/
+
 
 /* Add event listener for inputting any text inside time blocks */
 
@@ -253,7 +227,9 @@ $('.description').attr('name', 'insert something');
 // $('body').children().eq(0).children().eq(3); // accessing the local storage message element from HTML doc
 
 $('.description').on('input', function(enterData) {
-  $('.description[name]').val(); // refers to textarea
+
+ let inputText = $('.description[name]').val(); // refers to textarea
+
 });
 
 /* Save text to local storage */
@@ -268,7 +244,7 @@ const saveButton = function() { // this function will store inputted text on the
 
 let savedValue = localStorage.getItem('enter:');
 
-if ($('.description')) {
+if (savedValue !== null) {
   $('.description[name]').val(savedValue);
 }
 
