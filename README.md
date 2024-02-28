@@ -26,8 +26,9 @@ here is the screenshot:
 
 here are the links of the deployed application and repository:
 
-()
-()
+(https://paul449.github.io/bilbatua-scheduler-4675/)
+
+(https://github.com/Paul449/bilbatua-scheduler-4675)
 
 # Credits
 
