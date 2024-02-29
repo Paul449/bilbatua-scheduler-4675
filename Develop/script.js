@@ -224,7 +224,7 @@ colorBlocks();
 
 $('.description').attr('name', 'insert something');
 
-// $('body').children().eq(0).children().eq(3); // accessing the local storage message element from HTML doc
+
 
 $('.description').on('input', function(enterData) {
 
@@ -250,7 +250,7 @@ if (savedValue !== null) {
 
 /* Add event listener to click */
 
-$('.btn').on('click', saveButton);
+$(document).on('click','.btn',saveButton);
 
 
 
